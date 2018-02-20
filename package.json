@@ -4,7 +4,7 @@
   "description": "instagram bot library for nodejs application",
   "main": "lib.js",
   "scripts": {
-    "start": "node lib.js",
+    "start": "node lib.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "instagram",
     "instagram-bot",
     "instagram-api",
-    "instagram-lib",
+    "instagram-lib"
   ],
   "author": "Patryk Rzucidlo [@ptkdev] <support@ptkdev.io> (https://ptkdev.it)",
   "license": "GPL-3.0",
