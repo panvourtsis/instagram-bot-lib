@@ -39,11 +39,22 @@
  */
 const puppeteer = require('puppeteer');
 const path = require('path');
-const rx = require("rxjs");
+const Rx = require("rxjs");
 const {EventEmitter} = require("events");
+
 const event_emitter = new EventEmitter();
 
 function InstagramBotLib(config) {
+    const likes = Rx.Observable.fromEvent(event_emitter, "like", (text) => { 
+        return {
+            text: text
+        };
+    });
+
+    this.likes = () => {
+        return likes
+    };
+
     (async() => {
         /**
          * Init
