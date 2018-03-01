@@ -39,7 +39,7 @@
  */
 const puppeteer = require('puppeteer');
 const path = require('path');
-const rx = require("rxjs");
+const Rx = require("rxjs");
 const { EventEmitter } = require("events");
 const event_emitter = new EventEmitter();
 const browser = await puppeteer.launch({ headless: config.chrome_headless, args: config.chrome_options });
@@ -81,6 +81,16 @@ function InstagramBotLib(config) {
             let twofa = require(__dirname + '/modules/2FA.js')(bot, config, utils);
             let likemode_classic = require(__dirname + '/modules/likemode_classic.js')(bot, config, utils);
             let likemode_realistic = require(__dirname + '/modules/likemode_realistic.js')(bot, config, utils);
+
+            const likes = Rx.Observable.fromEvent(event_emitter, "like", (text) => {
+                return {
+                    text: text
+                };
+            });
+
+            this.likes = () => {
+                return likes
+            };
 
             /**
              * Bot variables
@@ -156,7 +166,7 @@ function InstagramBotLib(config) {
         })();
     }
 
-    function stop_bot(){
+    function stop_bot() {
         bot.close();
     }
 }

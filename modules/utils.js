@@ -11,6 +11,7 @@
  *              0.3 new sleep system
  *
  */
+
 class Utils {
     constructor(bot, config, rx, event_emitter) {
         this.bot = bot;
@@ -31,6 +32,7 @@ class Utils {
      *
      */
     logger(type, func, text) {
+        this.event_emitter.emit(func, text);
         console.log(type + " " + func + ": " + text);
 
         // @TODO: add Observable here
