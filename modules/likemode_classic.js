@@ -44,7 +44,7 @@ class Likemode_classic {
             this.utils.logger("[ERROR]", "like", "goto " + err);
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.utils.screenshot("like", "last_hashtag");
     }
@@ -71,7 +71,7 @@ class Likemode_classic {
                     return a.href;
                 }));
 
-                this.utils.sleep(this.utils.random_interval(10, 15));
+                await this.utils.sleep(this.utils.random_interval(10, 15));
 
                 if (this.config.debug == true)
                     this.utils.logger("[DEBUG]", "like", "array photos " + cache_hashtag);
@@ -83,7 +83,7 @@ class Likemode_classic {
                 if (typeof photo_url === "undefined")
                     this.utils.logger("[WARNING]", "like", "check if current hashtag have photos, you write it good in config.js? Bot go to next hashtag.");
 
-                this.utils.sleep(this.utils.random_interval(4, 8));
+                await this.utils.sleep(this.utils.random_interval(4, 8));
 
                 await this.bot.goto(photo_url);
             } catch (err) {
@@ -98,7 +98,7 @@ class Likemode_classic {
 
             this.utils.logger("[INFO]", "like", "current photo url from cache " + photo_url);
 
-            this.utils.sleep(this.utils.random_interval(4, 8));
+            await this.utils.sleep(this.utils.random_interval(4, 8));
 
             try {
                 await this.bot.goto(photo_url);
@@ -107,7 +107,7 @@ class Likemode_classic {
             }
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         return cache_hashtag;
     }
@@ -152,15 +152,15 @@ class Likemode_classic {
             this.status.CURRENT = this.status.ERROR;
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         this.bot.reload();
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.utils.screenshot("like", "last_like");
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         if (this.status.CURRENT == this.status.OK) {
             try {
@@ -176,7 +176,7 @@ class Likemode_classic {
                     this.utils.logger("[WARNING]", "like", "</3");
                     this.utils.logger("[WARNING]", "like", "error bot :( not like photo, now bot sleep 1-2h");
                     this.utils.logger("[WARNING]", "like", "You are in possible soft ban... If this message appear all time stop bot for 24h...");
-                    this.utils.sleep(this.utils.random_interval(3600, 3600*2));
+                    await this.utils.sleep(this.utils.random_interval(3600, 3600*2));
                 } else if (this.status.CURRENT == this.status.OK) {
                     this.utils.logger("[INFO]", "like", "<3");
                 }
@@ -190,7 +190,7 @@ class Likemode_classic {
             this.utils.logger("[WARNING]", "like", "You like this previously, change hashtag ig have few photos");
         }
 
-        this.utils.sleep(this.utils.random_interval(2, 5));
+        await this.utils.sleep(this.utils.random_interval(2, 5));
 
         await this.utils.screenshot("like", "last_like_after");
 
@@ -225,10 +225,10 @@ class Likemode_classic {
             if (cache_hashtag.length <= 0)
                 await this.like_open_hashtagpage();
 
-            this.utils.sleep(this.utils.random_interval(4, 8));
+            await this.utils.sleep(this.utils.random_interval(4, 8));
 
             cache_hashtag = await this.like_get_urlpic(cache_hashtag);
-            this.utils.sleep(this.utils.random_interval(4, 8));
+            await this.utils.sleep(this.utils.random_interval(4, 8));
 
             like_status = await this.like_click_heart();
 
@@ -240,7 +240,7 @@ class Likemode_classic {
             sec = Math.abs((t1.getTime() - t2.getTime()) / 1000);
             if (sec < sec_min && like_status >= 1) {
                 this.utils.logger("[INFO]", "likemode", "seconds of loop " + sec + "... for miss ban bot wait " + (sec_min - sec) + "-" + (sec_max - sec));
-                this.utils.sleep(this.utils.random_interval(sec_min - sec, sec_max - sec));
+                await this.utils.sleep(this.utils.random_interval(sec_min - sec, sec_max - sec));
             } else {
                 cache_hashtag = [];
             }

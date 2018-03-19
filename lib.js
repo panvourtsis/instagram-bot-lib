@@ -42,12 +42,19 @@ const path = require('path');
 const Rx = require("rxjs");
 const { EventEmitter } = require("events");
 const event_emitter = new EventEmitter();
-const browser = await puppeteer.launch({ headless: config.chrome_headless, args: config.chrome_options });
-const bot = await browser.newPage();
+
 
 function InstagramBotLib(config) {
-    function start_bot() {
-        (async() => {
+    let bot = undefined;
+
+    const likes = Rx.Observable.fromEvent(event_emitter, "like");
+
+    this.likes = likes
+
+    this.start_bot = async () => {
+        const browser = await puppeteer.launch({ headless: config.chrome_headless, args: config.chrome_options });
+        const bot = await browser.newPage();
+        
             /**
              * Init
              * =====================
@@ -76,21 +83,11 @@ function InstagramBotLib(config) {
              *              0.4 added: likemode_realistic
              *
              */
-            let utils = require(__dirname + '/modules/utils.js')(bot, config, rx, event_emitter);
+            let utils = require(__dirname + '/modules/utils.js')(bot, config, event_emitter);
             let login = require(__dirname + '/modules/login.js')(bot, config, utils);
             let twofa = require(__dirname + '/modules/2FA.js')(bot, config, utils);
             let likemode_classic = require(__dirname + '/modules/likemode_classic.js')(bot, config, utils);
             let likemode_realistic = require(__dirname + '/modules/likemode_realistic.js')(bot, config, utils);
-
-            const likes = Rx.Observable.fromEvent(event_emitter, "like", (text) => {
-                return {
-                    text: text
-                };
-            });
-
-            this.likes = () => {
-                return likes
-            };
 
             /**
              * Bot variables
@@ -161,13 +158,13 @@ function InstagramBotLib(config) {
                 }
             }
 
-            bot.close();
-
-        })();
+            //bot.close();
     }
 
-    function stop_bot() {
-        bot.close();
+    this.stop_bot = async () => {
+        if(bot !== undefined)
+            bot.close();
+        bot = undefined;
     }
 }
 

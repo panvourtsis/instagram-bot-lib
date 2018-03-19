@@ -94,11 +94,11 @@ class Twofa {
         if (this.config.instagram_pin == "sms")
             await this.choice_sms();
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.requestpin();
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
     }
 
     /**
@@ -123,7 +123,7 @@ class Twofa {
         await this.bot.type('input[name="' + input + '"]', pin, { delay: 100 });
         await this.utils.screenshot("twofa", "readpin");
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
     }
 
     /**
@@ -182,7 +182,7 @@ class Twofa {
             await this.utils.screenshot("twofa", "submitverify_ok");
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         if (this.status.CURRENT == this.status.OK) {
             try {
@@ -204,7 +204,7 @@ class Twofa {
             }
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         return this.status.CURRENT;
     }
@@ -240,7 +240,7 @@ class Twofa {
             this.utils.logger("[INFO]", "twofa", "no, try second verify");
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         this.utils.logger("[INFO]", "twofa", "status: " + this.status.CURRENT);
 
@@ -281,7 +281,7 @@ class Twofa {
             await this.utils.screenshot("twofa", "check_nopin");
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         this.utils.logger("[INFO]", "twofa", "status: " + this.status.CURRENT);
 
@@ -303,19 +303,19 @@ class Twofa {
 
         await this.sendpin();
 
-        this.utils.sleep(this.utils.random_interval(120, 180));
+        await this.utils.sleep(this.utils.random_interval(120, 180));
 
         await this.readpin("security_code");
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.submitform();
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         let status = await this.submitverify("security_code");
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         return status;
     }
@@ -334,13 +334,13 @@ class Twofa {
         this.utils.logger("[INFO]", "twofa (enabled)", "loading...");
 
         this.utils.logger("[WARNING]", "twofa", "please insert pin in loginpin.txt and wait 2-3 minutes... (tic... tac... tic... tac... tic...)");
-        this.utils.sleep(this.utils.random_interval(120, 180));
+        await this.utils.sleep(this.utils.random_interval(120, 180));
         await this.readpin("verificationCode");
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
         await this.submitform();
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
         let status = await this.submitverify("verificationCode");
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         return status;
     }

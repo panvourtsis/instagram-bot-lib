@@ -13,10 +13,9 @@
  */
 
 class Utils {
-    constructor(bot, config, rx, event_emitter) {
+    constructor(bot, config, event_emitter) {
         this.bot = bot;
         this.config = config;
-        this.rx = rx;
         this.event_emitter = event_emitter;
     }
 
@@ -87,8 +86,7 @@ class Utils {
      *
      */
     sleep(sec) {
-        let sleep = require('system-sleep');
-        sleep(sec);
+        return new Promise(resolve => setTimeout(resolve, sec));
     }
 
 }
