@@ -134,7 +134,7 @@ class Login {
             await this.utils.screenshot("login", "checkerrors");
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         return this.status.CURRENT;
     }
@@ -154,24 +154,24 @@ class Login {
 
         await this.open_loginpage();
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.set_username();
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.set_password();
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.submitform();
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         login_status = await this.submitverify();
         this.utils.logger("[INFO]", "login", "login_status is " + login_status);
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         return login_status;
     }
