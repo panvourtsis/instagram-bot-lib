@@ -1,0 +1,50 @@
+FROM arm32v6/alpine:edge
+
+ENV QEMU_EXECVE 1
+
+WORKDIR /app
+
+ADD . /app
+
+# For cross compile on dockerhub
+################################
+
+COPY armv6/qemu-arm-static /usr/bin/
+COPY armv6/resin-xbuild /usr/bin/
+
+RUN [ "/usr/bin/qemu-arm-static", "/bin/sh", "-c", "ln -s resin-xbuild /usr/bin/cross-build-start; ln -s resin-xbuild /usr/bin/cross-build-end; ln /bin/sh /bin/sh.real" ]
+
+RUN [ "cross-build-start" ]
+
+# Install required packages
+##############################
+
+RUN apk --update add --no-cache \
+    nodejs \
+    nodejs-npm
+
+# Install pm2
+RUN npm config set unsafe-perm true \
+    && npm install pm2 -g
+
+# Install project dependencies
+RUN npm install
+
+# Cleanup
+#########
+
+RUN find /usr/local \
+      \( -type d -a -name test -o -name tests \) \
+      -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
+      -exec rm -rf '{}' + \
+    && rm -rf /var/cache/apk/*
+
+# For cross compile on dockerhub
+################################
+
+RUN [ "cross-build-end" ]
+
+# Set the entry point
+###########################################
+
+CMD ["pm2-runtime", "bot.js"]

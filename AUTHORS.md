@@ -7,6 +7,13 @@
 * Twitter: [https://twitter.com/ptkdev](https://twitter.com/ptkdev)
 * GitHub: [https://github.com/ptkdev](https://github.com/ptkdev)
 
+# Ilua Chubarov (@Ilya) agoalofalife@gmail.com
+[![https://github.com/agoalofalife](https://avatars3.githubusercontent.com/u/15719824?s=150&v=4)](https://github.com/agoalofalife)
+
+`Developer - March 25, 2018`
+* Twitter: [https://twitter.com/agoalofalife1](https://twitter.com/agoalofalife1)
+* GitHub: [https://github.com/agoalofalife](https://github.com/agoalofalife)
+
 
 # Massimo (@maXfer75) maxfer75@hotmail.com
 [![https://twitter.com/maXfer75](https://ptkdev.it/img/stickers/maxFer75.png)](https://twitter.com/maXfer75)
