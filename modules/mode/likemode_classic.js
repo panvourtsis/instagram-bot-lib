@@ -24,7 +24,7 @@ class Likemode_classic extends Manager_state {
         this.STATE_EVENTS = require("../common/state").EVENTS;
         this.Log = require("../logger/Log");
         this.cache_hash_tags = [];
-        this.log = new this.Log(this.LOG_NAME);
+        this.log = new this.Log(this.LOG_NAME, this.config);
     }
 
     /**

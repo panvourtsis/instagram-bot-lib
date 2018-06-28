@@ -22,7 +22,7 @@ class Login extends Manager_state {
         this.STATE = require("../common/state").STATE;
         this.STATE_EVENTS = require("../common/state").EVENTS;
         this.Log = require("../logger/Log");
-        this.log = new this.Log(this.LOG_NAME);
+        this.log = new this.Log(this.LOG_NAME, this.config);
     }
 
     /**

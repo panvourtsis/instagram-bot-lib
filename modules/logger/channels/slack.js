@@ -10,9 +10,9 @@
  * 
  */
 class Slack {
-    constructor() {
+    constructor(config) {
         this.TYPE = require("./../types");
-        this.config = require("./../../../config");
+        this.config = config;
         this.request = require("request");
         this.webhook = this.config.log.channels.slack.webhook;
     }

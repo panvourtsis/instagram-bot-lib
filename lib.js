@@ -74,7 +74,7 @@ module.exports = function(config) {
         let routes = require("./routes/strategies");
         let utils = require("./modules/common/utils")(bot, config);
         let Log = require("./modules/logger/Log");
-        let log = new Log("switch_mode");
+        let log = new Log("switch_mode", config);
         let login = require("./modules/mode/login.js")(bot, config, utils);
         let twofa = require("./modules/mode/2fa.js")(bot, config, utils);
 
