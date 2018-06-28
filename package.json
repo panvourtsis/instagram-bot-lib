@@ -1,37 +1,63 @@
 {
   "name": "instagrambotlib",
-  "version": "0.6.1",
-  "description": "instagram bot library for nodejs application",
+  "description": "instagram bot api",
+  "version": "0.7.4",
   "main": "lib.js",
-  "scripts": {
-    "start": "node lib.js"
-  },
+  "author": "Patryk Rzucidlo [@ptkdev] <support@ptkdev.io> (https://ptkdev.it)",
+  "license": "GPL-3.0",
+  "homepage": "https://instagram.bot.ptkdev.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/social-manager-tools/instagram-bot-lib.git"
+    "url": "https://github.com/social-manager-tools/instagram-bot.js.git"
   },
+  "bugs": {
+    "url": "https://github.com/social-manager-tools/instagram-bot.js/issues"
+  },
+  "scripts": {
+    "start": "node bot.js",
+    "start-forever": "forever -o ./logs/debug.log -e ./logs/errors.log start bot.js",
+    "start-pm2": "pm2 -o ./logs/debug.log -e ./logs/errors.log start bot.js",
+    "start-pm2-nolog": "pm2 -o /dev/null -e ./logs/errors.log start bot.js ",
+    "stop": "killall node",
+    "stop-forever": "forever stop bot.js",
+    "stop-pm2": "pm2 stop bot.js",
+    "test": "node test.js",
+    "lint": "eslint ./ --cache --ignore-pattern .gitignore --fix",
+    "precommit-lint-check": "echo 'Pre-commit lint checks...' && exit 0"
+  },
+  "pre-commit": [
+    "precommit-lint-check",
+    "lint"
+  ],
   "keywords": [
     "bot",
     "ptkdev",
     "instagram",
-    "instagram-bot",
+    "instagram-lib",
     "instagram-api",
-    "instagram-lib"
+    "instagram-bot",
+    "puppeteer",
+    "selenium",
+    "webdriverio"
   ],
-  "author": "Patryk Rzucidlo [@ptkdev] <support@ptkdev.io> (https://ptkdev.it)",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/social-manager-tools/instagram-bot-lib/issues"
-  },
-  "homepage": "https://instagrambotlib.ptkdev.io",
   "dependencies": {
+    "colors": "^1.2.1",
+    "eslint": "^4.19.1",
     "path": "^0.12.7",
-    "system-sleep": "^1.3.6",
-    "puppeteer": "^1.0.0",
-    "rxjs": "^5.5.6",
-    "events": "^2.0.0"
+    "puppeteer": "1.4.0",
+    "request": "^2.85.0",
+    "system-sleep": "^1.3.6"
   },
   "engines": {
     "node": ">=7.6.0"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-snakecasejs": "^1.0.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "pre-commit": "^1.2.2"
   }
 }

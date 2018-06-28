@@ -1,6 +1,6 @@
 ######################################################################################
 # License:        MIT - http://opensource.org/licenses/MIT                           #
-# Author:         Patryk Rzucidlo (@PTKDev) <support@ptkdev.it> https://ptkdev.it    #
+# Author:         Patryk Rzucidlo (@ptkdev) <support@ptkdev.io> https://ptkdev.it    #
 # Original:       octocat - https://github.com/octocat                               #
 # Latest version: https://github.com/ptkdev/dotfiles                                 #
 ######################################################################################
@@ -46,6 +46,7 @@ logs/screenshot/*.jpg
 *.sql
 *.sqlite
 *.lock
+*.vscode
 yarn-debug.log
 yarn-error.log
 
@@ -104,6 +105,7 @@ pids
 *.pid
 *.seed
 *.pid.lock
+*.eslintcache
 
 # NodeJS #
 ##########
