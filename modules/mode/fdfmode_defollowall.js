@@ -20,7 +20,7 @@ class Fdfmode_defollowall extends Manager_state {
         this.Manager_state = require("../common/state").Manager_state;
         this.Log = require("../logger/Log");
         this.cache_hash_tags = [];
-        this.log = new this.Log(this.LOG_NAME);
+        this.log = new this.Log(this.LOG_NAME, this.config);
     }
 }
 
