@@ -76,11 +76,11 @@ class Twofa extends Manager_state{
         if (this.config.instagram_pin === "sms")
             await this.choice_sms();
 
-        this.utils.sleep(this.utils.random_interval(0, 2));
+        await this.utils.sleep(this.utils.random_interval(0, 2));
 
         await this.requestpin();
 
-        this.utils.sleep(this.utils.random_interval(0, 2));
+        await this.utils.sleep(this.utils.random_interval(0, 2));
     }
 
     /**
@@ -146,7 +146,7 @@ class Twofa extends Manager_state{
             await this.utils.screenshot(this.LOG_NAME, "submitverify_ok");
         }
 
-        this.utils.sleep(this.utils.random_interval(0, 2));
+        await this.utils.sleep(this.utils.random_interval(0, 2));
 
         if (this.is_ok()) {
             try {
@@ -168,7 +168,7 @@ class Twofa extends Manager_state{
             }
         }
 
-        this.utils.sleep(this.utils.random_interval(0, 2));
+        await this.utils.sleep(this.utils.random_interval(0, 2));
     }
 
     /**
@@ -197,7 +197,7 @@ class Twofa extends Manager_state{
             this.log.info("no, try second verify");
         }
 
-        this.utils.sleep(this.utils.random_interval(0, 2));
+        await this.utils.sleep(this.utils.random_interval(0, 2));
 
         this.log.info("status location: " + this.get_status());
     }
@@ -231,7 +231,7 @@ class Twofa extends Manager_state{
             await this.utils.screenshot(this.LOG_NAME, "check_nopin");
         }
 
-        this.utils.sleep(this.utils.random_interval(0, 2));
+        await this.utils.sleep(this.utils.random_interval(0, 2));
         this.log.info("status: " + this.get_status());
     }
 
@@ -245,19 +245,19 @@ class Twofa extends Manager_state{
 
         await this.sendpin();
 
-        this.utils.sleep(this.utils.random_interval(20, 30));
+        await this.utils.sleep(this.utils.random_interval(20, 30));
 
         await this.readpin("security_code");
 
-        this.utils.sleep(this.utils.random_interval(0, 2));
+        await this.utils.sleep(this.utils.random_interval(0, 2));
 
         await this.submitform();
 
-        this.utils.sleep(this.utils.random_interval(0, 2));
+        await this.utils.sleep(this.utils.random_interval(0, 2));
 
         await this.submitverify("security_code");
 
-        this.utils.sleep(this.utils.random_interval(0, 2));
+        await this.utils.sleep(this.utils.random_interval(0, 2));
     }
 
     /**
@@ -270,17 +270,17 @@ class Twofa extends Manager_state{
 
         this.log.warning("please insert pin in loginpin.txt, you have 50-60 seconds for that.. (tic... tac... tic... tac... tic...)");
 
-        this.utils.sleep(this.utils.random_interval(15, 20));
+        await this.utils.sleep(this.utils.random_interval(15, 20));
 
         await this.readpin("verificationCode");
 
         await this.submitform();
 
-        this.utils.sleep(this.utils.random_interval(0, 2));
+        await this.utils.sleep(this.utils.random_interval(0, 2));
 
         await this.submitverify("verificationCode");
         
-        this.utils.sleep(this.utils.random_interval(0, 2));
+        await this.utils.sleep(this.utils.random_interval(0, 2));
     }
 
 }
