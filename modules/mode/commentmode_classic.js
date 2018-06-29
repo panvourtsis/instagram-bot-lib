@@ -72,7 +72,7 @@ class commentmode_classic extends Manager_state {
             this.log.error(`goto ${err}`);
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.utils.screenshot(this.LOG_NAME, "last_hashtag");
     }
@@ -94,7 +94,7 @@ class commentmode_classic extends Manager_state {
                     return a.href;
                 }));
 
-                this.utils.sleep(this.utils.random_interval(10, 15));
+                await this.utils.sleep(this.utils.random_interval(10, 15));
 
                 if (this.utils.is_debug())
                     this.log.debug(`array photos ${this.cache_hash_tags}`);
@@ -104,7 +104,7 @@ class commentmode_classic extends Manager_state {
                 if (typeof photo_url === "undefined")
                     this.log.warning("check if current hashtag have photos, you write it good in config.js? Bot go to next hashtag.");
 
-                this.utils.sleep(this.utils.random_interval(4, 8));
+                await this.utils.sleep(this.utils.random_interval(4, 8));
 
                 await this.bot.goto(photo_url);
             } catch (err) {
@@ -116,7 +116,7 @@ class commentmode_classic extends Manager_state {
             photo_url = this.get_photo_url();
 
             this.log.info(`current photo url from cache ${photo_url}`);
-            this.utils.sleep(this.utils.random_interval(4, 8));
+            await this.utils.sleep(this.utils.random_interval(4, 8));
 
             try {
                 await this.bot.goto(photo_url);
@@ -125,7 +125,7 @@ class commentmode_classic extends Manager_state {
             }
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
     }
 
     /**
@@ -148,7 +148,7 @@ class commentmode_classic extends Manager_state {
                     this.log.warning("Failed...");
                     this.log.warning("error bot :( not comment under photo, now bot sleep 5-10min");
                     this.log.warning("You are in possible soft ban... If this message appear all time stop bot for 24h...");
-                    this.utils.sleep(this.utils.random_interval(60 * 5, 60 * 10));
+                    await this.utils.sleep(this.utils.random_interval(60 * 5, 60 * 10));
                 } else if (this.is_ok()) {
                     this.log.info("OK");
                 }
@@ -199,18 +199,18 @@ class commentmode_classic extends Manager_state {
             this.emit(this.STATE_EVENTS.CHANGE_STATUS, this.STATE.ERROR);
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         this.bot.reload();
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.utils.screenshot(this.LOG_NAME, "last_comment");
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
         await this.check_leave_comment();
 
-        this.utils.sleep(this.utils.random_interval(2, 5));
+        await this.utils.sleep(this.utils.random_interval(2, 5));
         await this.utils.screenshot(this.LOG_NAME, "last_comment_after");
     }
 
@@ -236,11 +236,11 @@ class commentmode_classic extends Manager_state {
                 if (this.cache_hash_tags.length <= 0)
                     await this.open_page();
 
-                this.utils.sleep(this.utils.random_interval(4, 8));
+                await this.utils.sleep(this.utils.random_interval(4, 8));
 
                 await this.like_get_urlpic();
 
-                this.utils.sleep(this.utils.random_interval(4, 8));
+                await this.utils.sleep(this.utils.random_interval(4, 8));
 
                 await this.comment();
 
@@ -250,11 +250,11 @@ class commentmode_classic extends Manager_state {
                 if (this.cache_hash_tags.length <= 0 && this.is_not_ready()) {
                     this.log.info(`finish fast comment, bot sleep ${this.config.bot_fastlike_min} - ${this.config.bot_fastlike_max} minutes`);
                     this.cache_hash_tags = [];
-                    this.utils.sleep(this.utils.random_interval(60 * this.config.bot_fastlike_min, 60 * this.config.bot_fastlike_max));
+                    await this.utils.sleep(this.utils.random_interval(60 * this.config.bot_fastlike_min, 60 * this.config.bot_fastlike_max));
                 }
             } else {
                 this.log.info("is night, bot sleep");
-                this.utils.sleep(this.utils.random_interval(60 * 4, 60 * 5));
+                await this.utils.sleep(this.utils.random_interval(60 * 4, 60 * 5));
             }
         } while (true);
     }

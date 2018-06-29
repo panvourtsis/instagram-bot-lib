@@ -197,8 +197,7 @@ class Utils {
      *
      */
     sleep(sec) {
-        let sleep = require("system-sleep");
-        sleep(sec);
+        return new Promise(resolve => setTimeout(resolve, sec));
     }
 
     /**

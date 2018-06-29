@@ -40,7 +40,7 @@ class Likemode_competitor_users extends Manager_state {
             this.log.error(`goto ${err}`);
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.utils.screenshot(this.LOG_NAME, "account_page");
     }
@@ -101,12 +101,12 @@ class Likemode_competitor_users extends Manager_state {
             if (typeof follower_url === "undefined")
                 this.log.warning("error follower url.");
 
-            this.utils.sleep(this.utils.random_interval(4, 8));
+            await this.utils.sleep(this.utils.random_interval(4, 8));
             await this.bot.goto(follower_url);
         } else {
             follower_url = this.get_follower_url();
             this.log.info(`current url from cache ${follower_url}`);
-            this.utils.sleep(this.utils.random_interval(4, 8));
+            await this.utils.sleep(this.utils.random_interval(4, 8));
 
             try {
                 await this.bot.goto(follower_url);
@@ -114,7 +114,7 @@ class Likemode_competitor_users extends Manager_state {
                 this.log.error(`goto ${err}`);
             }
         }
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
     }
 
     /**
@@ -140,7 +140,7 @@ class Likemode_competitor_users extends Manager_state {
 
                 this.get_random_follower_url();
 
-                this.utils.sleep(this.utils.random_interval(10, 15));
+                await this.utils.sleep(this.utils.random_interval(10, 15));
 
                 if (this.utils.is_debug())
                     this.log.debug(`array followers ${this.cache_hash_tags}`);
@@ -188,7 +188,7 @@ class Likemode_competitor_users extends Manager_state {
             this.emit(this.STATE_EVENTS.CHANGE_STATUS, this.STATE.ERROR);
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.utils.screenshot(this.LOG_NAME, "last_like_after");
     }
@@ -218,12 +218,12 @@ class Likemode_competitor_users extends Manager_state {
                 if (this.cache_hash_tags.length <= 0)
                     await this.open_account_page();
 
-                this.utils.sleep(this.utils.random_interval(4, 8));
+                await this.utils.sleep(this.utils.random_interval(4, 8));
 
                 await this.get_followers();
                 await this.open_follower_account();
 
-                this.utils.sleep(this.utils.random_interval(4, 8));
+                await this.utils.sleep(this.utils.random_interval(4, 8));
 
                 await this.like_click_heart();
 
@@ -233,11 +233,11 @@ class Likemode_competitor_users extends Manager_state {
                 if (this.cache_hash_tags.length <= 0 && this.is_not_ready()) {
                     this.log.info("finish fast like, bot sleep " + this.config.bot_fastlike_min + "-" + this.config.bot_fastlike_max + " minutes");
                     this.cache_hash_tags = [];
-                    this.utils.sleep(this.utils.random_interval(60 * this.config.bot_fastlike_min, 60 * this.config.bot_fastlike_max));
+                    await this.utils.sleep(this.utils.random_interval(60 * this.config.bot_fastlike_min, 60 * this.config.bot_fastlike_max));
                 }
             } else {
                 this.log.info("is night, bot sleep");
-                this.utils.sleep(this.utils.random_interval(60 * 4, 60 * 5));
+                await this.utils.sleep(this.utils.random_interval(60 * 4, 60 * 5));
             }
         } while (true);
     }

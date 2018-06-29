@@ -51,7 +51,7 @@ class Likemode_realistic extends Manager_state {
             this.log.error(`goto ${err}`);
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.utils.screenshot(this.LOG_NAME, "last_hashtag");
     }
@@ -73,7 +73,7 @@ class Likemode_realistic extends Manager_state {
                     return a.href;
                 }));
 
-                this.utils.sleep(this.utils.random_interval(10, 15));
+                await this.utils.sleep(this.utils.random_interval(10, 15));
 
                 if (this.utils.is_debug())
                     this.log.debug(`array photos ${this.cache_hash_tags}`);
@@ -84,7 +84,7 @@ class Likemode_realistic extends Manager_state {
                 if (typeof photo_url === "undefined")
                     this.log.warning("check if current hashtag have photos, you write it good in config.js? Bot go to next hashtag.");
 
-                this.utils.sleep(this.utils.random_interval(4, 8));
+                await this.utils.sleep(this.utils.random_interval(4, 8));
 
                 await this.bot.goto(photo_url);
             } catch (err) {
@@ -96,7 +96,7 @@ class Likemode_realistic extends Manager_state {
             photo_url = this.get_photo_url();
 
             this.log.info(`current photo url from cache ${photo_url}`);
-            this.utils.sleep(this.utils.random_interval(4, 8));
+            await this.utils.sleep(this.utils.random_interval(4, 8));
 
             try {
                 await this.bot.goto(photo_url);
@@ -104,7 +104,7 @@ class Likemode_realistic extends Manager_state {
                 this.log.error(`goto ${err}`);
             }
         }
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
     }
 
     /**
@@ -130,7 +130,7 @@ class Likemode_realistic extends Manager_state {
             this.emit(this.STATE_EVENTS.CHANGE_STATUS, this.STATE.ERROR);
         }
 
-        this.utils.sleep(this.utils.random_interval(4, 8));
+        await this.utils.sleep(this.utils.random_interval(4, 8));
 
         await this.utils.screenshot(this.LOG_NAME, "last_like_after");
     }
@@ -160,11 +160,11 @@ class Likemode_realistic extends Manager_state {
                 if (this.cache_hash_tags.length <= 0)
                     await this.like_open_hashtagpage();
 
-                this.utils.sleep(this.utils.random_interval(4, 8));
+                await this.utils.sleep(this.utils.random_interval(4, 8));
 
                 await this.like_get_urlpic();
 
-                this.utils.sleep(this.utils.random_interval(4, 8));
+                await this.utils.sleep(this.utils.random_interval(4, 8));
 
                 await this.like_click_heart();
 
@@ -174,11 +174,11 @@ class Likemode_realistic extends Manager_state {
                 if (this.cache_hash_tags.length <= 0 && this.is_not_ready()) {
                     this.log.info("finish fast like, bot sleep " + this.config.bot_fastlike_min + "-" + this.config.bot_fastlike_max + " minutes");
                     this.cache_hash_tags = [];
-                    this.utils.sleep(this.utils.random_interval(60 * this.config.bot_fastlike_min, 60 * this.config.bot_fastlike_max));
+                    await this.utils.sleep(this.utils.random_interval(60 * this.config.bot_fastlike_min, 60 * this.config.bot_fastlike_max));
                 }
             } else {
                 this.log.info("is night, bot sleep");
-                this.utils.sleep(this.utils.random_interval(60 * 4, 60 * 5));
+                await this.utils.sleep(this.utils.random_interval(60 * 4, 60 * 5));
             }
         } while (true);
     }
