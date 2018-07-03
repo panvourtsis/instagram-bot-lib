@@ -130,8 +130,8 @@ class Likemode_superlike extends Manager_state {
         this.log.info("try open userpage");
 
         try {
-            await this.bot.waitForSelector("section:nth-child(1) main:nth-child(1) article:nth-child(1) header:nth-child(1) div:nth-child(2) a:nth-child(1)");
-            let button = await this.bot.$("section:nth-child(1) main:nth-child(1) article:nth-child(1) header:nth-child(1) div:nth-child(2) a:nth-child(1)");
+            await this.bot.waitForSelector("main article:nth-child(1) section:nth-child(1) button:nth-child(1)");
+            let button = await this.bot.$("main article:nth-child(1) section:nth-child(1) button:nth-child(1)");
             await button.click();
             this.emit(this.STATE_EVENTS.CHANGE_STATUS, this.STATE.OK);
         } catch (err) {

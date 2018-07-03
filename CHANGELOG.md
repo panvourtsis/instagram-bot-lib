@@ -1,3 +1,7 @@
+# v0.7.5 (03 July, 2018)
+* Update: Porting of instagram-bot.js v0.7.5
+
+
 # v0.7.4c (29 June, 2018)
 * Fix: Porting of instagram-bot.js v0.7.4
 
