@@ -1,3 +1,7 @@
+# v0.7.5b (09 July, 2018)
+* Feature: path log/pin and uifix() for social-manager-tools app
+
+
 # v0.7.5 (03 July, 2018)
 * Update: Porting of instagram-bot.js v0.7.5
 

@@ -58,6 +58,25 @@ class Utils {
     }
 
     /**
+     * Fix ui configs params
+     * =====================
+     * String aparms to booleans from social-manager-tools
+     *
+     */
+    fixui(config) {
+        config.bot_likeday_min = parseInt(config.bot_likeday_min);
+        config.bot_likeday_max = parseInt(config.bot_likeday_max);
+        config.bot_superlike_n = parseInt(config.bot_superlike_n);
+        if(config.chrome_headless == "enabled"){
+            config.chrome_headless = false;
+        }else if(config.chrome_headless == "disabled"){
+            config.chrome_headless = true;
+        }
+
+        return config;
+    }
+    
+    /**
      * Default config.js
      * =====================
      * Get default value if config.js is not updated from config.js.tpl

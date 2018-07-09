@@ -2,6 +2,7 @@ module.exports = {
     // InstagramBot.js Configs
     "debug": true,
     "login": true,
+    "ui": false, // only for social-manager-tools
 
     // Instagram Account
     "instagram_username": "ptkdev", // without @
@@ -43,6 +44,8 @@ module.exports = {
     "executable_path": "", // example for Mac OS: /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
 
     // LOG
+    "pin_path":"../../loginpin.txt",
+    "log_path":"../../logs/debug.log",
     "log": {
         "drivers": ["console"], // slack or console
         "screenshot": false,  // disable or enable screenshot in logs folder
