@@ -5,7 +5,7 @@
  *
  * @author:     Patryk Rzucidlo [@ptkdev] <support@ptkdev.io> (https://ptkdev.it)
  * @file:       bot.js
- * @version:    0.7.5
+ * @version:    0.7.5b
  *
  * @license:    Code and contributions have 'GNU General Public License v3'
  *              This program is free software: you can redistribute it and/or modify
@@ -48,6 +48,9 @@ module.exports = function(config) {
          *
          */
         let check = require("./modules/common/utils")(bot, config);
+        if(config.ui === true){
+            config = check.fixui(config);
+        }
         config = check.default_config(config);
         check.donate();
         check.check_updates(version.version);

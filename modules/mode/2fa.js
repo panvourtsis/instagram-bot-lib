@@ -93,7 +93,7 @@ class Twofa extends Manager_state{
         this.log.info("readpin");
 
         const fs = require("fs");
-        let data = fs.readFileSync(__dirname + "/../../loginpin.txt", "utf8");
+        let data = fs.readFileSync(this.config.pin_path, "utf8");
         let pin = data.toString();
 
         await this.bot.waitForSelector("input[name=\"" + input + "\"]");
