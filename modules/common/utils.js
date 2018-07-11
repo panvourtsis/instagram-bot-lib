@@ -69,7 +69,7 @@ class Utils {
         config.bot_superlike_n = parseInt(config.bot_superlike_n);
         if(config.chrome_headless == "enabled"){
             config.chrome_headless = false;
-        }else if(config.chrome_headless == "disabled"){
+        }else{
             config.chrome_headless = true;
         }
 

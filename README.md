@@ -35,7 +35,7 @@ This library (node module) provides api for include <a href="https://github.com/
 
 ## Fast setup
 1. Run `npm install instagrambotlib`
-2. Get config.js file for step 3 [from here](https://raw.githubusercontent.com/social-manager-tools/instagram-bot-lib/0.7.5b/config.js.tpl), fill it properly.
+2. Get config.js file for step 3 [from here](https://raw.githubusercontent.com/social-manager-tools/instagram-bot-lib/0.7.5c/config.js.tpl), fill it properly.
 2. On your code require library and run bot, example:
 ```
     const config = require ("./config");

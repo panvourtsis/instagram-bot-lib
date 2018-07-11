@@ -1,3 +1,7 @@
+# v0.7.5c (11 July, 2018)
+* Fix: likemode_superlike timeout error
+
+
 # v0.7.5b (09 July, 2018)
 * Feature: path log/pin and uifix() for social-manager-tools app
 
