@@ -5,7 +5,7 @@
  *
  * @author:     Patryk Rzucidlo [@ptkdev] <support@ptkdev.io> (https://ptkdev.it)
  * @file:       bot.js
- * @version:    0.7.5b
+ * @version:    0.7.5d
  *
  * @license:    Code and contributions have 'GNU General Public License v3'
  *              This program is free software: you can redistribute it and/or modify

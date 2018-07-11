@@ -4,7 +4,7 @@
 
 <p align="center"><a href="#" alt="License"><img src="https://img.shields.io/badge/license-GLPv3-brightgreen.svg"></a>
 <a href="https://github.com/GoogleChrome/puppeteer" alt="powered by puppeteer"><img src="https://img.shields.io/badge/powered%20by-puppeteer-46aef7.svg"></a>
-<a href="https://github.com/social-manager-tools/instagram-bot.js/releases" alt="Version"><img src="https://img.shields.io/badge/version-v0.7.5b-lightgrey.svg"></a>
+<a href="https://github.com/social-manager-tools/instagram-bot.js/releases" alt="Version"><img src="https://img.shields.io/badge/version-v0.7.5d-lightgrey.svg"></a>
 <a href="https://slack.ptkdev.io" alt="Slack Chat"><img src="https://img.shields.io/badge/chat%20on-Slack-orange.svg"></a>
 <a href="http://blog.ptkdev.io" alt="Blog"><img src="https://img.shields.io/badge/blog-medium-2AE176.svg"></a>
 <a href="https://twitter.com/ptkdevio" alt="Twitter"><img src="https://img.shields.io/badge/twitter-ptkdevio-2AA3EF.svg"></a>   
@@ -35,7 +35,7 @@ This library (node module) provides api for include <a href="https://github.com/
 
 ## Fast setup
 1. Run `npm install instagrambotlib`
-2. Get config.js file for step 3 [from here](https://raw.githubusercontent.com/social-manager-tools/instagram-bot-lib/0.7.5b/config.js.tpl), fill it properly.
+2. Get config.js file for step 3 [from here](https://raw.githubusercontent.com/social-manager-tools/instagram-bot-lib/0.7.5c/config.js.tpl), fill it properly.
 2. On your code require library and run bot, example:
 ```
     const config = require ("./config");
