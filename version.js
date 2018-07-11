@@ -10,5 +10,5 @@
  *
  */
 module.exports = {
-    "version": "0.7.5c"
+    "version": "0.7.5d"
 };

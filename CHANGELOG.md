@@ -1,4 +1,4 @@
-# v0.7.5c (11 July, 2018)
+# v0.7.5c and v0.7.5d (11 July, 2018)
 * Fix: likemode_superlike timeout error
 
 
