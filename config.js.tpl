@@ -44,8 +44,10 @@ module.exports = {
     "executable_path": "", // example for Mac OS: /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
 
     // LOG
-    "pin_path":"../../loginpin.txt",
-    "log_path":"../../logs/debug.log",
+    "pin_path":"./loginpin.txt",
+    "log_path":"./logs/debug.log",
+    "logerr_path":"./logs/errors.log",
+    "screenshot_path":"./logs/screenshot/",
     "log": {
         "drivers": ["console"], // slack or console
         "screenshot": false,  // disable or enable screenshot in logs folder

@@ -1,3 +1,7 @@
+# v0.8.0 (17 July, 2018)
+* Fix: path of logs and screenshot
+
+
 # v0.7.5c and v0.7.5d (11 July, 2018)
 * Fix: likemode_superlike timeout error
 

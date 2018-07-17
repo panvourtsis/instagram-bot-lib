@@ -67,15 +67,15 @@ class Utils {
         config.bot_likeday_min = parseInt(config.bot_likeday_min);
         config.bot_likeday_max = parseInt(config.bot_likeday_max);
         config.bot_superlike_n = parseInt(config.bot_superlike_n);
-        if(config.chrome_headless == "enabled"){
+        if (config.chrome_headless == "enabled") {
             config.chrome_headless = false;
-        }else{
+        } else {
             config.chrome_headless = true;
         }
 
         return config;
     }
-    
+
     /**
      * Default config.js
      * =====================
@@ -159,6 +159,22 @@ class Utils {
             config.executable_path = "";
             this.log.error("config.executable_path use the default value, update your config.js from config.js.tpl");
         }
+        if (typeof config.screenshot_path === "undefined") {
+            config.screenshot_path = "./logs/screenshot/";
+            this.log.error("config.screenshot_path use the default value, update your config.js from config.js.tpl");
+        }
+        if (typeof config.logerr_path === "undefined") {
+            config.logerr_path = "./logs/errors.log";
+            this.log.error("config.logerr_path use the default value, update your config.js from config.js.tpl");
+        }
+        if (typeof config.log_path === "undefined") {
+            config.log_path = "./logs/debug.log";
+            this.log.error("config.log_path use the default value, update your config.js from config.js.tpl");
+        }
+        if (typeof config.pin_path === "undefined") {
+            config.pin_path = "./loginpin.txt";
+            this.log.error("config.pin_path use the default value, update your config.js from config.js.tpl");
+        }
 
         return config;
     }
@@ -172,7 +188,7 @@ class Utils {
     async screenshot(func, name) {
         if (this.config.log.screenshot) {
             try {
-                await this.bot.screenshot({ path: "./logs/screenshot/" + this.config.instagram_username + "_" + func + "_" + name + ".jpg" });
+                await this.bot.screenshot({ path: this.config.screenshot_path + this.config.instagram_username + "_" + func + "_" + name + ".jpg" });
                 this.log.info("Cheese! Screenshot!");
             } catch (err) {
                 this.log.error(this.LOG.WARNING, "screenshot", "error " + err);
