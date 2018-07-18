@@ -4,7 +4,7 @@
 
 <p align="center"><a href="#" alt="License"><img src="https://img.shields.io/badge/license-GLPv3-brightgreen.svg"></a>
 <a href="https://github.com/GoogleChrome/puppeteer" alt="powered by puppeteer"><img src="https://img.shields.io/badge/powered%20by-puppeteer-46aef7.svg"></a>
-<a href="https://github.com/social-manager-tools/instagram-bot.js/releases" alt="Version"><img src="https://img.shields.io/badge/version-v0.8.0-lightgrey.svg"></a>
+<a href="https://github.com/social-manager-tools/instagram-bot.js/releases" alt="Version"><img src="https://img.shields.io/badge/version-v0.8.1%20BETA-lightgrey.svg"></a>
 <a href="https://slack.ptkdev.io" alt="Slack Chat"><img src="https://img.shields.io/badge/chat%20on-Slack-orange.svg"></a>
 <a href="http://blog.ptkdev.io" alt="Blog"><img src="https://img.shields.io/badge/blog-medium-2AE176.svg"></a>
 <a href="https://twitter.com/ptkdevio" alt="Twitter"><img src="https://img.shields.io/badge/twitter-ptkdevio-2AA3EF.svg"></a>   
@@ -33,24 +33,62 @@ This library (node module) provides api for include <a href="https://github.com/
 * [✘] Follow/Defollow Classic: follow user from random hashtag and defollow after 1h.
 * [✘] Defollow All: defollow all your following (ignore users in whitelist).
 
-## Fast setup
+## Fast usage
 1. Run `npm install instagrambotlib`
-2. Get config.js file for step 3 [from here](https://raw.githubusercontent.com/social-manager-tools/instagram-bot-lib/0.8.0/config.js.tpl), fill it properly.
-2. On your code require library and run bot, example:
+2. Get [config.js](https://raw.githubusercontent.com/social-manager-tools/instagram-bot-lib/0.8.0/config.js.tpl) file for step 3, fill it properly and remove `.tpl` suffix.
+3. On your code require library and run bot, example:
 ```
     const config = require ("./config");
     const Bot = require("instagrambotlib");
     let bot = new Bot(config);
     bot.start();
 ```
+4. If work add star :star: at this project :heart:
+5. If you want help me: <b><a href="http://paypal.ptkdev.io">donate on paypal</a></b> or become a <b><a href="http://patreon.ptkdev.io">backer on patreon</a></b>.
 
-# API 
+For advanced configuration see [INSTALL.md](https://github.com/social-manager-tools/instagram-bot-lib/blob/master/INSTALL.md).
+
+#### 2FA: SMS Pin
+If you received sms or email pin edit `loginpin.txt` and insert it on first line. Wait 50-60 seconds...
+
+#### Tips: hide browser
+Edit `config.js` and switch `chrome_headless` option to `true`.
+
+#### Check if work:
+See images in ./logs/screenshot or disable `chrome_headless` flag.
+
+## API 
 Method | Description
 ------------ | -------------
 start() | run instagram.bot.js
 
+## Desktop setup (GUI Version)
+1. Download <a href="https://socialmanagertools.ptkdev.io/">Social Manager Tools GUI</a>.
+2. Run application.
+
+## Docker setup
+If you prefer to run this using Docker, an official container is available from the [Docker Hub](https://hub.docker.com/r/socialmanagertools/instagram-bot.js).
+
+In order to run it, copy the `config.js.tpl` file, configure it as you prefer, then use it through volume mapping,
+like in this example:
+
+```sh
+$ docker run \
+    --restart=always \
+    --name=instagram-bot \
+    -d \
+    -v /path/to/config.js:/app/config.js \
+    socialmanagertools/instagram-bot.js &>/dev/null
+```
+
+## Roadmap
+See full roadmap (open task, todo and bugs) in [project page](https://github.com/social-manager-tools/instagram-bot.js/projects?query=is%3Aopen+sort%3Aname-asc).
+* ### [v0.7.X](https://github.com/social-manager-tools/instagram-bot.js/projects/1)
+* ### [v0.8.X](https://github.com/social-manager-tools/instagram-bot.js/projects/2)
+* ### [v0.9.X](https://github.com/social-manager-tools/instagram-bot.js/projects/3)
+
 ## Sorry for snake_case
-I love snake_case syntax sorry for this :sob: don't hate me.
+I love :snake: snake_case syntax sorry for this :sob: don't hate me.
 
 <a href="https://github.com/social-manager-tools" alt="Screenshot"><img src="https://socialmanagertools.ptkdev.io/img/socialmanagertools_logo.png"></a>
 <h1>Social Manager Tools</h1>

@@ -40,32 +40,32 @@ module.exports = class Log {
 
     info(message) {
         this.channels_log(TYPES_LOG.INFO, message);
-        fs.appendFile(this.config.log_path, '[INFO] ' + message + "\n", function(err) {
+        fs.appendFile(this.config.log_path, "[INFO] " + message + "\n", function(err) {
             if (err) console.log(err);
         });
     }
 
     warning(message) {
         this.channels_log(TYPES_LOG.WARNING, message);
-        fs.appendFile(this.config.log_path, '[WARNING] ' + message + "\n", function(err) {
+        fs.appendFile(this.config.log_path, "[WARNING] " + message + "\n", function(err) {
             if (err) console.log(err);
         });
     }
 
     error(message) {
         this.channels_log(TYPES_LOG.ERROR, message);
-        fs.appendFile(this.config.log_path, '[ERROR] ' + message + "\n", function(err) {
+        fs.appendFile(this.config.log_path, "[ERROR] " + message + "\n", function(err) {
             if (err) console.log(err);
         });
 
-        fs.appendFile(this.config.logerr_path, '[ERROR] ' + message + "\n", function(err) {
+        fs.appendFile(this.config.logerr_path, "[ERROR] " + message + "\n", function(err) {
             if (err) console.log(err);
         });
     }
 
     debug(message) {
         this.channels_log(TYPES_LOG.DEBUG, message);
-        fs.appendFile(this.config.log_path, '[DEBUG] ' + message + "\n", function(err) {
+        fs.appendFile(this.config.log_path, "[DEBUG] " + message + "\n", function(err) {
             if (err) console.log(err);
         });
     }
