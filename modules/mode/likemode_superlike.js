@@ -18,6 +18,8 @@ class Likemode_superlike extends Manager_state {
         this.utils = utils;
         this.cache_hash_tags = [];
         this.cache_hash_tags_user = [];
+        this.photo_liked = [];
+        this.photo_current = "";
         this.LOG_NAME = "like_superlike";
         this.STATE = require("../common/state").STATE;
         this.STATE_EVENTS = require("../common/state").EVENTS;
@@ -197,6 +199,16 @@ class Likemode_superlike extends Manager_state {
                 this.cache_hash_tags_user = [];
             }
         }
+
+        this.photo_current = photo_url.split("?tagged")[0];
+        if (typeof photo_url !== "undefined"){
+            if(typeof this.photo_liked[this.photo_current] === "undefined"){
+                this.photo_liked[this.photo_current] = 1;
+            }else{
+                this.photo_liked[this.photo_current]++;
+            }
+            
+        }
         await this.utils.sleep(this.utils.random_interval(4, 8));
     }
 
@@ -212,8 +224,12 @@ class Likemode_superlike extends Manager_state {
         try {
             await this.bot.waitForSelector("main article:nth-child(1) section:nth-child(1) button:nth-child(1)");
             let button = await this.bot.$("main article:nth-child(1) section:nth-child(1) button:nth-child(1)");
-            await button.click();
-            this.log.info("<3");
+            if(this.photo_liked[this.photo_current] > 1){
+                this.log.warning("</3 liked previously");
+            }else{
+                await button.click();
+                this.log.info("<3");
+            }
             this.emit(this.STATE_EVENTS.CHANGE_STATUS, this.STATE.OK);
         } catch (err) {
             if (this.utils.is_debug())

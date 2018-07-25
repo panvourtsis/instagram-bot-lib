@@ -7,6 +7,9 @@
  * @file:       bot.js
  * @version:    0.8.0
  *
+ * @link: https://github.com/GoogleChrome/puppeteer
+ * @link: https://www.npmjs.com/package/instagrambotlib
+ * 
  * @license:    Code and contributions have 'GNU General Public License v3'
  *              This program is free software: you can redistribute it and/or modify
  *              it under the terms of the GNU General Public License as published by
@@ -22,17 +25,7 @@
  * @link        Homepage:     https://instagram.bot.ptkdev.io
  *              GitHub Repo:  https://github.com/social-manager-tools/instagram-bot.js
  */
-
-/**
- * Libs
- * =====================
- * Open source library
- *
- * @link: https://github.com/GoogleChrome/puppeteer
- * @link: https://www.npmjs.com/package/instagrambotlib
- * 
- */
 const config = require ("./config");
-const Bot = require("instagrambotlib");
+const Bot = require("./lib");
 let bot = new Bot(config);
 bot.start();

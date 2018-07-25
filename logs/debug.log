@@ -1,0 +1,5 @@
+[INFO] time night: 1959
+[INFO] loading... Wed Jul 25 2018 19:59:27 GMT+0200 (CEST)
+[INFO] cache array size 0
+[INFO] current hashtag buongiorno
+[ERROR] goto Error: Protocol error (Page.navigate): Session closed. Most likely the page has been closed.

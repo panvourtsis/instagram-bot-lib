@@ -1,3 +1,10 @@
+# v0.8.1 (25 July, 2018)
+* Fix: Unliking already liked pictures (all mode) [Bug: #59]
+* Fix: Comment already comment pictures
+* Update: `likemode_realistic` now is default mode in `config.js.tpl`
+* Update: `900` now is default value of max like/day in `config.js.tpl`
+
+
 # v0.8.0 (17 July, 2018)
 * Fix: path of logs and screenshot
 

@@ -160,10 +160,10 @@ class Twofa extends Manager_state{
             }
 
             if (this.is_stop_bot()) {
-                this.log.error(this.LOG.ERROR, this.LOG_NAME, "instagram error... auto logout... restart bot...");
+                this.log.error("instagram error... auto logout... restart bot...");
                 await this.utils.screenshot(this.LOG_NAME, "submitverify_error2");
             } else if (this.is_ok()) {
-                this.log.info(this.LOG.ERROR, this.LOG_NAME, "instagram no have a crash");
+                this.log.info("instagram no have a crash");
                 await this.utils.screenshot(this.LOG_NAME, "submitverify_ok2");
             }
         }
@@ -245,7 +245,7 @@ class Twofa extends Manager_state{
 
         await this.sendpin();
 
-        await this.utils.sleep(this.utils.random_interval(20, 30));
+        await this.utils.sleep(this.utils.random_interval(40, 60));
 
         await this.readpin("security_code");
 
@@ -270,7 +270,7 @@ class Twofa extends Manager_state{
 
         this.log.warning("please insert pin in loginpin.txt, you have 50-60 seconds for that.. (tic... tac... tic... tac... tic...)");
 
-        await this.utils.sleep(this.utils.random_interval(15, 20));
+        await this.utils.sleep(this.utils.random_interval(40, 60));
 
         await this.readpin("verificationCode");
 

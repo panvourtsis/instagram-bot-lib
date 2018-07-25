@@ -18,9 +18,9 @@ module.exports = {
     // [WORK] comment_mode              - leave a comment under the photo via hashtag.
     // [TODO] fdfmode_classic           - follow user from random hashtag and defollow after 1h | 300 follow-defollow/day.
     // [TODO] fdfmode_defollowall       - defollow all your following (not defollow users in whitelist) | 30 defollow/hour.
-    "bot_mode": "likemode_classic",
-    "bot_likeday_min": 400,      // work only in likemode_classic
-    "bot_likeday_max": 600,      // work only in likemode_classic. In 2018 limit instagram is descreased to 400-600/day :(
+    "bot_mode": "likemode_realistic",
+    "bot_likeday_min": 800,      // work only in likemode_classic
+    "bot_likeday_max": 900,      // work only in likemode_classic. In 2018 limit instagram is 1000/day
     "bot_sleep_night": true,     // if you need stop bot in night 
     "bot_start_sleep": "7:00",   // sleep from 00:00 to 7:00 am, work in likemode_realistic, comment_mode, likemode_superlike and likemode_competitor_users
     "bot_fastlike_min": "15",    // min minutes of sleep after like 10-12 photo, work in likemode_realistic and likemode_superlike (superlike add 3 like/user, set 50min)
