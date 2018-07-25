@@ -16,6 +16,8 @@ class commentmode_classic extends Manager_state {
         this.config = config;
         this.utils = utils;
         this.LOG_NAME = "comment";
+        this.photo_commented = [];
+        this.photo_current = "";
         this.STATE = require("../common/state").STATE;
         this.STATE_EVENTS = require("../common/state").EVENTS;
         this.Log = require("../logger/Log");
@@ -125,6 +127,15 @@ class commentmode_classic extends Manager_state {
             }
         }
 
+        this.photo_current = photo_url.split("?tagged")[0];
+        if (typeof photo_url !== "undefined"){
+            if(typeof this.photo_commented[this.photo_current] === "undefined"){
+                this.photo_commented[this.photo_current] = 1;
+            }else{
+                this.photo_commented[this.photo_current]++;
+            }
+            
+        }
         await this.utils.sleep(this.utils.random_interval(4, 8));
     }
 
@@ -185,9 +196,13 @@ class commentmode_classic extends Manager_state {
             if (this.is_ok()) {
                 await this.bot.waitForSelector(comment_area_elem);
                 let button = await this.bot.$(comment_area_elem);
-                await button.click();
-                await this.bot.type(comment_area_elem, this.get_comment(), { delay: 100 });
-                await button.press("Enter");
+                if(this.photo_commented[this.photo_current] > 1){
+                    this.log.warning("</3 commented previously");
+                }else{
+                    await button.click();
+                    await this.bot.type(comment_area_elem, this.get_comment(), { delay: 100 });
+                    await button.press("Enter");
+                }
             } else {
                 this.log.info("bot is unable to comment on this photo");
                 this.emit(this.STATE_EVENTS.CHANGE_STATUS, this.STATE.ERROR);

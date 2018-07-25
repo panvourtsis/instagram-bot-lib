@@ -1,10 +1,10 @@
 <p align="center"><a href="https://instagram.bot.ptkdev.io" alt="Screenshot"><img src="https://ptkdev.it/img/bot/instagram-bot-lib.png"></a></p>
 
-<p align="center"><h1 align="center">InstagramBotLib</h1></p>
+<p align="center"><h1 align="center">Instagram Bot (Library)</h1></p>
 
 <p align="center"><a href="#" alt="License"><img src="https://img.shields.io/badge/license-GLPv3-brightgreen.svg"></a>
 <a href="https://github.com/GoogleChrome/puppeteer" alt="powered by puppeteer"><img src="https://img.shields.io/badge/powered%20by-puppeteer-46aef7.svg"></a>
-<a href="https://github.com/social-manager-tools/instagram-bot.js/releases" alt="Version"><img src="https://img.shields.io/badge/version-v0.8.1%20BETA-lightgrey.svg"></a>
+<a href="https://github.com/social-manager-tools/instagram-bot.js/releases" alt="Version"><img src="https://img.shields.io/badge/version-v0.8.1-lightgrey.svg"></a>
 <a href="https://slack.ptkdev.io" alt="Slack Chat"><img src="https://img.shields.io/badge/chat%20on-Slack-orange.svg"></a>
 <a href="http://blog.ptkdev.io" alt="Blog"><img src="https://img.shields.io/badge/blog-medium-2AE176.svg"></a>
 <a href="https://twitter.com/ptkdevio" alt="Twitter"><img src="https://img.shields.io/badge/twitter-ptkdevio-2AA3EF.svg"></a>   
@@ -35,7 +35,7 @@ This library (node module) provides api for include <a href="https://github.com/
 
 ## Fast usage
 1. Run `npm install instagrambotlib`
-2. Get [config.js](https://raw.githubusercontent.com/social-manager-tools/instagram-bot-lib/0.8.0/config.js.tpl) file for step 3, fill it properly and remove `.tpl` suffix.
+2. Get [config.js](https://raw.githubusercontent.com/social-manager-tools/instagram-bot-lib/0.8.1/config.js.tpl) file for step 3, fill it properly and remove `.tpl` suffix.
 3. On your code require library and run bot, example:
 ```
     const config = require ("./config");
@@ -56,6 +56,19 @@ Edit `config.js` and switch `chrome_headless` option to `true`.
 
 #### Check if work:
 See images in ./logs/screenshot or disable `chrome_headless` flag.
+
+## Bugs
+1. `[ERROR] login: The username you entered doesn't belong to an account. Please check your username and try again. (restart bot and retry...)`
+* Why happen? Instagram desktop is in overcapacity. Happen at 12-14 and 19-21 all days. 
+* Solution: Login in other time or Logout from your instagram app, and login again. Reboot bot and retry... Try and retry, and retry, and retry... Or stop bot and wait 2-3h...
+
+2. `Error: Protocol error (Page.captureScreenshot): Target closed.`
+* Why happen? macOS don't support correctly screenshot from puppeteer
+* Solution: set `screenshot` on `false` in `config.js`
+
+3. `This code is no longer valid. Please request a new one. (400) (/accounts/login/ajax/two_factor/)` 
+* Why happen? Instagram bug at login
+* Solution: disable at moment 2FA or try old version of chrome (edit `config.js` set `executable_path`)
 
 ## API 
 Method | Description

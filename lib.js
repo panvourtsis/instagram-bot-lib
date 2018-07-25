@@ -22,15 +22,6 @@
  * @link        Homepage:     https://instagram.bot.ptkdev.io
  *              GitHub Repo:  https://github.com/social-manager-tools/instagram-bot.js
  */
-
-/**
- * Libs
- * =====================
- * Open source library
- *
- * @link: https://github.com/GoogleChrome/puppeteer
- * 
- */
 module.exports = function(config) {
     this.config = config;
     this.start = async function() {
