@@ -4,7 +4,7 @@
 
 <p align="center"><a href="#" alt="License"><img src="https://img.shields.io/badge/license-GLPv3-brightgreen.svg"></a>
 <a href="https://github.com/GoogleChrome/puppeteer" alt="powered by puppeteer"><img src="https://img.shields.io/badge/powered%20by-puppeteer-46aef7.svg"></a>
-<a href="https://github.com/social-manager-tools/instagram-bot.js/releases" alt="Version"><img src="https://img.shields.io/badge/version-v0.8.1-lightgrey.svg"></a>
+<a href="https://github.com/social-manager-tools/instagram-bot.js/releases" alt="Version"><img src="https://img.shields.io/badge/version-v0.8.2-lightgrey.svg"></a>
 <a href="https://slack.ptkdev.io" alt="Slack Chat"><img src="https://img.shields.io/badge/chat%20on-Slack-orange.svg"></a>
 <a href="http://blog.ptkdev.io" alt="Blog"><img src="https://img.shields.io/badge/blog-medium-2AE176.svg"></a>
 <a href="https://twitter.com/ptkdevio" alt="Twitter"><img src="https://img.shields.io/badge/twitter-ptkdevio-2AA3EF.svg"></a>   
@@ -14,7 +14,7 @@
 <p align="center"><a href="https://instagram.bot.ptkdev.io" alt="Screenshot"><img src="https://ptkdev.it/img/bot/ptkdev-instagram-bot.gif"></a></p>
 
 ## What does it do
-This library (node module) provides api for include <a href="https://github.com/social-manager-tools/instagram-bot.js">instagram-bot.js</a> function in your application.
+This library (node module) provides api for include <a href="https://github.com/social-manager-tools/instagram-bot.js">instagram-bot.js</a> function in your application. This bot helps you increase the engagement of your Instagram profile through different social algorithms. Increase the likes on your photos and followers.
 
 ## Features
 * [✓] Easy to use
@@ -35,7 +35,7 @@ This library (node module) provides api for include <a href="https://github.com/
 
 ## Fast usage
 1. Run `npm install instagrambotlib`
-2. Get [config.js](https://raw.githubusercontent.com/social-manager-tools/instagram-bot-lib/0.8.1/config.js.tpl) file for step 3, fill it properly and remove `.tpl` suffix.
+2. Get [config.js](https://raw.githubusercontent.com/social-manager-tools/instagram-bot-lib/0.8.2/config.js.tpl) file for step 3, fill it properly and remove `.tpl` suffix.
 3. On your code require library and run bot, example:
 ```
     const config = require ("./config");
